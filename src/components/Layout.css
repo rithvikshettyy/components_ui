@@ -201,33 +201,48 @@
 .sidebar-toggle {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
   padding: var(--space-2) var(--space-4);
   margin-bottom: var(--space-2);
   color: var(--color-text-tertiary);
+  transition: padding var(--duration-normal) var(--ease-out-expo);
+}
+
+.sidebar--collapsed .sidebar-toggle {
+  justify-content: center;
+  padding: var(--space-2) 0;
 }
 
 .sidebar-toggle button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: var(--radius-md);
-  color: var(--color-text-tertiary);
-  transition: color var(--duration-fast) var(--ease-out-quart),
-              background var(--duration-fast) var(--ease-out-quart);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out-quart);
 }
 
 .sidebar-toggle button:hover {
   color: var(--color-text);
   background: var(--color-surface-hover);
+  border-color: var(--color-border-strong);
+  transform: translateY(-1px);
+}
+
+.sidebar-toggle button:active {
+  transform: translateY(0);
 }
 
 .sidebar-toggle button svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
 }
 
 /* Sidebar Groups */

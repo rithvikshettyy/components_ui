@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Sun, Moon, Copy, Check, Heart, Eye, Download, Code } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { componentRegistry } from '../registry/registryData';
 import { CodeBlock } from './CodeBlock';
 import './VariantDetailPage.css';
@@ -66,7 +67,12 @@ export function VariantDetailPage() {
   };
 
   return (
-    <div className="detail-page">
+    <motion.div 
+      className="detail-page"
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+    >
       {/* Back Header */}
       <div className="detail-header">
         <button className="back-btn" onClick={() => navigate(`/components/${categorySlug || 'buttons'}`)}>
@@ -181,13 +187,19 @@ export function VariantDetailPage() {
           </div>
 
           {/* Code blocks */}
-          <div className="code-block-wrapper">
+          <motion.div 
+            key={activeTab}
+            initial={{ opacity: 0, x: 8 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="code-block-wrapper"
+          >
             <CodeBlock 
               code={activeTab === 'html' ? variant.htmlCode : variant.cssCode} 
               language={activeTab === 'html' ? 'tsx' : 'css'}
               showLineNumbers
             />
-          </div>
+          </motion.div>
         </div>
       </div>
 

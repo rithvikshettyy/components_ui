@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Eye, Heart, Search, SlidersHorizontal, Grid3X3 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { componentRegistry } from '../registry/registryData';
 import './CategoryGridPage.css';
 
@@ -72,7 +73,12 @@ export function CategoryGridPage() {
   };
 
   return (
-    <div className="grid-page">
+    <motion.div 
+      className="grid-page"
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
+    >
       <div className="grid-page-header">
         <div className="grid-page-category">Elements</div>
         <h1 className="grid-page-title">{getCategoryTitle(slug)}</h1>
@@ -128,10 +134,28 @@ export function CategoryGridPage() {
 
       {/* Component Grid */}
       {filteredVariants.length > 0 ? (
-        <div className="component-tile-grid">
+        <motion.div 
+          className="component-tile-grid"
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.04
+              }
+            }
+          }}
+          initial="hidden"
+          animate="show"
+        >
           {filteredVariants.map(variant => (
-            <div
+            <motion.div
               key={variant.id}
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                show: { opacity: 1, y: 0 }
+              }}
+              transition={{ type: 'spring', stiffness: 280, damping: 22 }}
               className="component-tile"
               onClick={(e) => {
                 // If the click is inside the component container, let the interactive element handle it natively
@@ -167,9 +191,9 @@ export function CategoryGridPage() {
                   </span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       ) : (
         <div className="grid-empty-state">
           <Grid3X3 size={48} className="empty-icon" />
@@ -177,6 +201,6 @@ export function CategoryGridPage() {
           <p>We couldn't find any variants matching your criteria. Try adjusting your search query.</p>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
