@@ -4,6 +4,8 @@ import { ArrowLeft, Sun, Moon, Copy, Check, Heart, Eye, Download, Code } from 'l
 import { motion } from 'framer-motion';
 import { componentRegistry } from '../registry/registryData';
 import { CodeBlock } from './CodeBlock';
+import '../registry/button/Button.css';
+import './ComponentWorkspace.css';
 import './VariantDetailPage.css';
 
 export function VariantDetailPage() {

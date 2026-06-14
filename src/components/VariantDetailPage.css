@@ -304,6 +304,7 @@
   border: none;
   border-bottom: 2px solid transparent;
   cursor: pointer;
+  white-space: nowrap;
   transition: all var(--duration-fast);
   height: 100%;
 }
@@ -332,6 +333,7 @@
   letter-spacing: 0.05em;
   color: var(--color-text);
   cursor: pointer;
+  white-space: nowrap;
   transition: all var(--duration-fast);
 }
 
@@ -379,6 +381,21 @@
 
 .export-react-dropdown {
   margin-left: auto;
+}
+
+@media (max-width: 640px) {
+  .detail-bottom-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-2);
+  }
+  .export-react-dropdown {
+    margin-left: 0;
+    display: flex;
+  }
+  .export-react-dropdown button {
+    flex-grow: 1;
+  }
 }
 
 /* ── Error Screen ───────────────────────────────────────── */

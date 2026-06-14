@@ -13,6 +13,12 @@
   border: 1px solid transparent;
   border-radius: var(--radius-md);
   cursor: pointer;
+
+  /* Default button size (matches medium variant) */
+  height: 38px;
+  padding: 0 var(--space-5);
+  font-size: var(--text-sm);
+
   transition:
     background-color var(--duration-fast) var(--ease-out-quart),
     color var(--duration-fast) var(--ease-out-quart),
@@ -54,14 +60,16 @@
 
 /* ── Variants ────────────────────────────────────────── */
 
-/* Default — solid accent */
-.rs-btn--default {
+/* Default / Primary — solid text color fill */
+.rs-btn--default,
+.rs-btn--primary {
   background: var(--color-text);
   color: var(--color-bg);
   border-color: var(--color-text);
 }
 
-.rs-btn--default:hover:not(:disabled) {
+.rs-btn--default:hover:not(:disabled),
+.rs-btn--primary:hover:not(:disabled) {
   opacity: 0.88;
 }
 

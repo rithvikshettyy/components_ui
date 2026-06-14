@@ -10,6 +10,7 @@ import { CommandPalette, type CommandItem } from './registry/command-palette/Com
 import { componentRegistry } from './registry/registryData';
 import { Compass, Cpu } from 'lucide-react';
 
+import './registry/button/Button.css';
 import './components/Layout.css';
 
 function AppContent() {
