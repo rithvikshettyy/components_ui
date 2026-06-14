@@ -1,0 +1,151 @@
+/* ═══════════════════════════════════════════════════════════
+   RS Button — Variants · Sizes · States
+   ═══════════════════════════════════════════════════════════ */
+
+.rs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 500;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out-quart),
+    color var(--duration-fast) var(--ease-out-quart),
+    border-color var(--duration-fast) var(--ease-out-quart),
+    opacity var(--duration-fast) var(--ease-out-quart),
+    transform var(--duration-instant) var(--ease-out-quart);
+  user-select: none;
+  position: relative;
+  outline: none;
+}
+
+.rs-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.rs-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ── Sizes ───────────────────────────────────────────── */
+.rs-btn--sm {
+  height: 32px;
+  padding: 0 var(--space-3);
+  font-size: var(--text-xs);
+}
+
+.rs-btn--md {
+  height: 38px;
+  padding: 0 var(--space-5);
+  font-size: var(--text-sm);
+}
+
+.rs-btn--lg {
+  height: 46px;
+  padding: 0 var(--space-8);
+  font-size: var(--text-base);
+}
+
+/* ── Variants ────────────────────────────────────────── */
+
+/* Default — solid accent */
+.rs-btn--default {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+.rs-btn--default:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+/* Secondary — muted fill */
+.rs-btn--secondary {
+  background: var(--color-surface-active);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.rs-btn--secondary:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-strong);
+}
+
+/* Outline — border only */
+.rs-btn--outline {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.rs-btn--outline:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-strong);
+}
+
+/* Ghost — no border, no fill */
+.rs-btn--ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-color: transparent;
+}
+
+.rs-btn--ghost:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+/* Destructive — red */
+.rs-btn--destructive {
+  background: var(--red-500);
+  color: oklch(97% 0.01 25);
+  border-color: var(--red-500);
+}
+
+.rs-btn--destructive:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* ── States ──────────────────────────────────────────── */
+.rs-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rs-btn--loading {
+  cursor: wait;
+}
+
+/* Spinner */
+.rs-btn-spinner {
+  width: 1em;
+  height: 1em;
+  animation: rs-spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+.rs-btn-text--loading {
+  opacity: 0.7;
+}
+
+@keyframes rs-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Reduced Motion ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .rs-btn-spinner {
+    animation-duration: 1.5s;
+  }
+
+  .rs-btn:active:not(:disabled) {
+    transform: none;
+  }
+}

@@ -1,0 +1,120 @@
+/* ═══════════════════════════════════════════════════════════
+   Input / Text Box Designs
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Shared ─────────────────────────────────────────────── */
+.rs-input-wrapper { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; max-width: 340px; }
+.rs-input-label {
+  font-family: var(--font-display); font-size: var(--text-sm); font-weight: 500; color: var(--color-text);
+}
+.rs-input-hint {
+  font-family: var(--font-display); font-size: var(--text-xs); color: var(--color-text-tertiary);
+}
+.rs-input-error {
+  font-family: var(--font-display); font-size: var(--text-xs); color: var(--red-500); font-weight: 500;
+}
+
+/* ── Basic Input ────────────────────────────────────────── */
+.rs-input {
+  width: 100%; height: 40px; padding: 0 var(--space-3);
+  font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-text);
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-md); outline: none;
+  transition: border-color var(--duration-fast) var(--ease-out-quart),
+              box-shadow var(--duration-fast) var(--ease-out-quart);
+}
+.rs-input:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-subtle); }
+.rs-input::placeholder { color: var(--color-text-tertiary); }
+.rs-input-wrapper--error .rs-input { border-color: var(--red-500); }
+.rs-input-wrapper--error .rs-input:focus { box-shadow: 0 0 0 3px oklch(from var(--red-500) l c h / 0.15); }
+
+/* ── Floating Label ─────────────────────────────────────── */
+.rs-float-wrapper { position: relative; width: 100%; max-width: 340px; }
+.rs-float-input {
+  width: 100%; height: 52px; padding: 20px var(--space-3) 6px;
+  font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-text);
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-md); outline: none;
+  transition: border-color var(--duration-fast) var(--ease-out-quart);
+}
+.rs-float-input:focus { border-color: var(--color-accent); }
+.rs-float-label {
+  position: absolute; left: var(--space-3); top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-text-tertiary);
+  pointer-events: none;
+  transition: transform var(--duration-fast) var(--ease-out-expo),
+              font-size var(--duration-fast) var(--ease-out-expo),
+              color var(--duration-fast) var(--ease-out-quart);
+  transform-origin: left center;
+}
+.rs-float-input:focus + .rs-float-label,
+.rs-float-input:not(:placeholder-shown) + .rs-float-label {
+  transform: translateY(-135%) scale(0.8);
+  color: var(--color-accent);
+  font-weight: 500;
+}
+.rs-float-wrapper--error .rs-float-input { border-color: var(--red-500); }
+
+/* ── Underline Input ────────────────────────────────────── */
+.rs-underline-wrapper { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; max-width: 340px; }
+.rs-underline-container { position: relative; }
+.rs-underline-input {
+  width: 100%; height: 40px; padding: 0 0 var(--space-1) 0;
+  font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-text);
+  background: transparent; border: none; border-bottom: 1px solid var(--color-border); outline: none;
+}
+.rs-underline-bar {
+  position: absolute; bottom: 0; left: 50%; width: 0; height: 2px;
+  background: var(--color-accent);
+  transition: width var(--duration-normal) var(--ease-out-expo),
+              left var(--duration-normal) var(--ease-out-expo);
+}
+.rs-underline-input:focus + .rs-underline-bar { width: 100%; left: 0; }
+.rs-underline-wrapper--error .rs-underline-bar { background: var(--red-500); width: 100%; left: 0; }
+
+/* ── Search Input ───────────────────────────────────────── */
+.rs-search-wrapper {
+  position: relative; display: flex; align-items: center; width: 100%; max-width: 340px;
+}
+.rs-search-icon {
+  position: absolute; left: var(--space-3); color: var(--color-text-tertiary); pointer-events: none;
+}
+.rs-search-input {
+  width: 100%; height: 40px; padding: 0 var(--space-10) 0 calc(var(--space-3) + 22px);
+  font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-text);
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-full); outline: none;
+  transition: border-color var(--duration-fast) var(--ease-out-quart),
+              box-shadow var(--duration-fast) var(--ease-out-quart);
+}
+.rs-search-input:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-subtle); }
+.rs-search-input::placeholder { color: var(--color-text-tertiary); }
+.rs-search-input::-webkit-search-cancel-button { display: none; }
+.rs-search-clear {
+  position: absolute; right: var(--space-2); display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%; color: var(--color-text-tertiary);
+  transition: background var(--duration-fast) var(--ease-out-quart), color var(--duration-fast) var(--ease-out-quart);
+}
+.rs-search-clear:hover { background: var(--color-surface-hover); color: var(--color-text); }
+
+/* ── Password Input ─────────────────────────────────────── */
+.rs-password-container { position: relative; display: flex; align-items: center; }
+.rs-input--password { padding-right: var(--space-10); }
+.rs-password-toggle {
+  position: absolute; right: var(--space-2); display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: var(--radius-md); color: var(--color-text-tertiary);
+  transition: color var(--duration-fast) var(--ease-out-quart);
+}
+.rs-password-toggle:hover { color: var(--color-text); }
+
+/* ── Textarea ───────────────────────────────────────────── */
+.rs-textarea {
+  width: 100%; min-height: 100px; padding: var(--space-3);
+  font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-text);
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-md); outline: none; resize: vertical;
+  transition: border-color var(--duration-fast) var(--ease-out-quart);
+  line-height: var(--leading-normal);
+}
+.rs-textarea:focus { border-color: var(--color-accent); }

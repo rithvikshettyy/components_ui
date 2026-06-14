@@ -1,0 +1,421 @@
+/* ═══════════════════════════════════════════════════════════
+   Animated Button Designs
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Shimmer Button ─────────────────────────────────────── */
+.rs-shimmer-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--color-text);
+  color: var(--color-bg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--duration-instant) var(--ease-out-quart);
+}
+.rs-shimmer-btn:active { transform: scale(0.97); }
+.rs-shimmer-btn--sm { height: 34px; padding: 0 var(--space-4); font-size: var(--text-xs); }
+.rs-shimmer-btn--md { height: 40px; padding: 0 var(--space-6); font-size: var(--text-sm); }
+.rs-shimmer-btn--lg { height: 48px; padding: 0 var(--space-8); font-size: var(--text-base); }
+.rs-shimmer-btn__content { position: relative; z-index: 1; }
+.rs-shimmer-btn__shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    oklch(100% 0 0 / 0.15) 37%,
+    oklch(100% 0 0 / 0.25) 50%,
+    oklch(100% 0 0 / 0.15) 63%,
+    transparent 75%
+  );
+  background-size: 250% 100%;
+  animation: rs-shimmer 2.5s ease-in-out infinite;
+}
+@keyframes rs-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Magnetic Button ────────────────────────────────────── */
+.rs-magnetic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 var(--space-8);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.33, 1, 0.68, 1),
+              box-shadow var(--duration-fast) var(--ease-out-quart);
+  will-change: transform;
+}
+.rs-magnetic-btn:hover {
+  box-shadow: 0 4px 20px oklch(0% 0 0 / 0.15);
+}
+
+/* ── Ripple Button ──────────────────────────────────────── */
+.rs-ripple-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 var(--space-6);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform var(--duration-instant) var(--ease-out-quart);
+}
+.rs-ripple-btn:active { transform: scale(0.97); }
+.rs-ripple-btn--primary { background: var(--color-text); color: var(--color-bg); }
+.rs-ripple-btn--secondary { background: var(--color-surface-active); color: var(--color-text); border: 1px solid var(--color-border); }
+.rs-ripple-btn__content { position: relative; z-index: 1; }
+.rs-ripple-btn__ripple {
+  position: absolute;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background: oklch(100% 0 0 / 0.3);
+  transform: translate(-50%, -50%) scale(0);
+  animation: rs-ripple-expand 0.6s ease-out forwards;
+  pointer-events: none;
+}
+.rs-ripple-btn--secondary .rs-ripple-btn__ripple {
+  background: oklch(0% 0 0 / 0.08);
+}
+@keyframes rs-ripple-expand {
+  to { transform: translate(-50%, -50%) scale(30); opacity: 0; }
+}
+
+/* ── Gradient Border Button ─────────────────────────────── */
+.rs-gradient-border-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 2px;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: conic-gradient(
+    from 0deg,
+    oklch(72% 0.14 70),
+    oklch(58% 0.18 250),
+    oklch(58% 0.20 25),
+    oklch(62% 0.17 145),
+    oklch(72% 0.14 70)
+  );
+  background-size: 200% 200%;
+  animation: rs-gradient-spin 3s linear infinite;
+  cursor: pointer;
+  transition: transform var(--duration-instant) var(--ease-out-quart);
+}
+.rs-gradient-border-btn:active { transform: scale(0.97); }
+.rs-gradient-border-btn__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 var(--space-6);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: calc(var(--radius-lg) - 2px);
+  transition: background-color var(--duration-fast) var(--ease-out-quart);
+}
+.rs-gradient-border-btn:hover .rs-gradient-border-btn__inner {
+  background: var(--color-bg);
+}
+@keyframes rs-gradient-spin {
+  to { background-position: 200% 200%; }
+}
+
+/* ── Neon Pulse Button ──────────────────────────────────── */
+.rs-neon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 var(--space-6);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: var(--radius-md);
+  background: transparent;
+  cursor: pointer;
+  transition: transform var(--duration-instant) var(--ease-out-quart),
+              box-shadow var(--duration-fast) var(--ease-out-quart);
+}
+.rs-neon-btn:active { transform: scale(0.97); }
+.rs-neon-btn--cyan {
+  color: oklch(75% 0.14 195);
+  border-color: oklch(75% 0.14 195);
+}
+.rs-neon-btn--cyan:hover {
+  box-shadow: 0 0 12px oklch(75% 0.14 195 / 0.5), inset 0 0 12px oklch(75% 0.14 195 / 0.1);
+}
+.rs-neon-btn--pink {
+  color: oklch(70% 0.18 350);
+  border-color: oklch(70% 0.18 350);
+}
+.rs-neon-btn--pink:hover {
+  box-shadow: 0 0 12px oklch(70% 0.18 350 / 0.5), inset 0 0 12px oklch(70% 0.18 350 / 0.1);
+}
+.rs-neon-btn--green {
+  color: oklch(72% 0.17 150);
+  border-color: oklch(72% 0.17 150);
+}
+.rs-neon-btn--green:hover {
+  box-shadow: 0 0 12px oklch(72% 0.17 150 / 0.5), inset 0 0 12px oklch(72% 0.17 150 / 0.1);
+}
+
+/* ── Arrow Slide Button ─────────────────────────────────── */
+.rs-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 42px;
+  padding: 0 var(--space-5);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform var(--duration-instant) var(--ease-out-quart),
+              gap var(--duration-normal) var(--ease-out-expo);
+}
+.rs-arrow-btn:hover { gap: var(--space-4); }
+.rs-arrow-btn:active { transform: scale(0.97); }
+.rs-arrow-btn__icon {
+  display: inline-flex;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+.rs-arrow-btn:hover .rs-arrow-btn__icon { transform: translateX(2px); }
+
+/* ── Loading State Button ───────────────────────────────── */
+.rs-loading-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  min-width: 140px;
+  padding: 0 var(--space-6);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--duration-normal) var(--ease-out-quart),
+              transform var(--duration-instant) var(--ease-out-quart);
+}
+.rs-loading-btn:active:not(:disabled) { transform: scale(0.97); }
+.rs-loading-btn--loading { cursor: wait; }
+.rs-loading-btn--success { background: var(--green-500); }
+.rs-loading-btn__content {
+  transition: opacity var(--duration-fast) var(--ease-out-quart);
+}
+.rs-loading-btn__spinner,
+.rs-loading-btn__check {
+  position: absolute;
+  display: inline-flex;
+}
+.rs-loading-btn__spin-icon {
+  animation: rs-spin 0.6s linear infinite;
+}
+@keyframes rs-spin {
+  to { transform: rotate(360deg); }
+}
+.rs-loading-btn__check-path {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: rs-check-draw 0.4s ease-out 0.1s forwards;
+}
+@keyframes rs-check-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── Sparkle Button ─────────────────────────────────────── */
+.rs-sparkle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 42px;
+  padding: 0 var(--space-6);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  background: linear-gradient(135deg, oklch(72% 0.14 70), oklch(62% 0.14 40));
+  color: oklch(98% 0.01 70);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--duration-instant) var(--ease-out-quart),
+              filter var(--duration-fast) var(--ease-out-quart);
+}
+.rs-sparkle-btn:hover { filter: brightness(1.1); }
+.rs-sparkle-btn:active { transform: scale(0.97); }
+.rs-sparkle-btn__icon {
+  animation: rs-sparkle-pulse 1.5s ease-in-out infinite;
+}
+@keyframes rs-sparkle-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+/* ── Electric Button ────────────────────────────────────── */
+.rs-electric-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 42px;
+  padding: 0 var(--space-6);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  background: linear-gradient(135deg, oklch(55% 0.20 290), oklch(50% 0.22 310));
+  color: oklch(95% 0.02 290);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--duration-instant) var(--ease-out-quart),
+              box-shadow var(--duration-fast) var(--ease-out-quart);
+}
+.rs-electric-btn:hover {
+  box-shadow: 0 0 20px oklch(55% 0.20 290 / 0.4);
+}
+.rs-electric-btn:active { transform: scale(0.97); }
+.rs-electric-btn__icon {
+  animation: rs-zap 2s ease-in-out infinite;
+}
+@keyframes rs-zap {
+  0%, 90%, 100% { opacity: 1; }
+  92% { opacity: 0.3; }
+  94% { opacity: 1; }
+  96% { opacity: 0.3; }
+}
+
+/* ── Cyberpunk Glitch Button ────────────────────────────── */
+.rs-cyber-btn {
+  --primary: oklch(65% 0.22 330); /* Neon Pink */
+  --secondary: oklch(75% 0.18 190); /* Neon Cyan */
+  --yellow: oklch(85% 0.18 90); /* Cyber Yellow */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  outline: none;
+  box-shadow: 4px 4px 0px var(--primary);
+  transition: transform var(--duration-instant) var(--ease-out-quart),
+              box-shadow var(--duration-instant) var(--ease-out-quart);
+}
+
+.rs-cyber-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--yellow);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--duration-fast) var(--ease-out-quart);
+}
+
+.rs-cyber-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--primary);
+  border-color: var(--primary);
+  color: oklch(10% 0 0); /* dark text for yellow background */
+}
+
+.rs-cyber-btn:hover::after {
+  opacity: 1;
+}
+
+.rs-cyber-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--primary);
+}
+
+/* Glitch text effect on hover */
+.rs-cyber-btn:hover::before {
+  content: attr(data-glitch);
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--yellow);
+  color: oklch(10% 0 0);
+  z-index: 2;
+  text-shadow: -2px 0 var(--secondary), 2px 0 var(--primary);
+  animation: rs-cyber-glitch 1s linear infinite;
+}
+
+@keyframes rs-cyber-glitch {
+  0% {
+    clip-path: inset(40% 0 61% 0);
+  }
+  20% {
+    clip-path: inset(92% 0 1% 0);
+  }
+  40% {
+    clip-path: inset(15% 0 80% 0);
+  }
+  65% {
+    clip-path: inset(80% 0 5% 0);
+  }
+  80% {
+    clip-path: inset(3% 0 92% 0);
+  }
+  100% {
+    clip-path: inset(40% 0 61% 0);
+  }
+}
+
+/* ── Reduced Motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .rs-shimmer-btn__shimmer { animation: none; }
+  .rs-gradient-border-btn { animation: none; }
+  .rs-loading-btn__spin-icon { animation-duration: 1.5s; }
+  .rs-sparkle-btn__icon { animation: none; }
+  .rs-electric-btn__icon { animation: none; }
+  .rs-ripple-btn__ripple { animation: none; }
+}

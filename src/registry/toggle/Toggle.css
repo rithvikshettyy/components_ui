@@ -1,0 +1,153 @@
+/* ═══════════════════════════════════════════════════════════
+   Toggle / Switch Designs
+   ═══════════════════════════════════════════════════════════ */
+
+.rs-toggle-label {
+  display: inline-flex; align-items: center; gap: var(--space-3); cursor: pointer; user-select: none;
+}
+.rs-toggle-label--disabled { opacity: 0.5; cursor: not-allowed; }
+.rs-toggle-text { font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-text); }
+
+/* ── Basic Toggle ───────────────────────────────────────── */
+.rs-toggle {
+  position: relative; border: none; border-radius: var(--radius-full); padding: 2px;
+  background: var(--color-border-strong); cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out-quart);
+}
+.rs-toggle--on { background: var(--color-accent); }
+.rs-toggle--sm { width: 32px; height: 18px; }
+.rs-toggle--md { width: 40px; height: 22px; }
+.rs-toggle--lg { width: 52px; height: 28px; }
+.rs-toggle__thumb {
+  display: block; border-radius: 50%; background: var(--color-surface);
+  transition: transform var(--duration-fast) var(--ease-out-expo);
+  box-shadow: 0 1px 3px oklch(0% 0 0 / 0.15);
+}
+.rs-toggle--sm .rs-toggle__thumb { width: 14px; height: 14px; }
+.rs-toggle--md .rs-toggle__thumb { width: 18px; height: 18px; }
+.rs-toggle--lg .rs-toggle__thumb { width: 24px; height: 24px; }
+.rs-toggle--on.rs-toggle--sm .rs-toggle__thumb { transform: translateX(14px); }
+.rs-toggle--on.rs-toggle--md .rs-toggle__thumb { transform: translateX(18px); }
+.rs-toggle--on.rs-toggle--lg .rs-toggle__thumb { transform: translateX(24px); }
+
+/* ── iOS Style Toggle ───────────────────────────────────── */
+.rs-ios-toggle {
+  position: relative; width: 50px; height: 30px; border: none; border-radius: var(--radius-full); padding: 2px;
+  background: var(--color-border-strong); cursor: pointer;
+  transition: background-color var(--duration-normal) var(--ease-out-quart);
+}
+.rs-ios-toggle--on { background: oklch(62% 0.17 145); }
+.rs-ios-toggle__thumb {
+  display: block; width: 26px; height: 26px; border-radius: 50%;
+  background: oklch(100% 0 0);
+  box-shadow: 0 2px 6px oklch(0% 0 0 / 0.2);
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+.rs-ios-toggle--on .rs-ios-toggle__thumb { transform: translateX(20px); }
+
+/* ── Day/Night Toggle ───────────────────────────────────── */
+.rs-daynight-toggle {
+  position: relative; width: 64px; height: 32px; border: none; border-radius: var(--radius-full);
+  padding: 0; cursor: pointer; overflow: hidden;
+}
+.rs-daynight-toggle__track {
+  position: absolute; inset: 0; border-radius: var(--radius-full);
+  background: linear-gradient(135deg, oklch(80% 0.08 80), oklch(75% 0.12 55));
+  transition: background var(--duration-slow) var(--ease-out-quart);
+}
+.rs-daynight-toggle--night .rs-daynight-toggle__track {
+  background: linear-gradient(135deg, oklch(22% 0.04 260), oklch(15% 0.03 270));
+}
+.rs-daynight-toggle__stars {
+  position: absolute; inset: 0; opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out-quart);
+}
+.rs-daynight-toggle--night .rs-daynight-toggle__stars { opacity: 1; }
+.rs-daynight-star {
+  position: absolute; width: 3px; height: 3px; border-radius: 50%;
+  background: oklch(95% 0 0);
+  animation: rs-star-twinkle 2s ease-in-out infinite;
+}
+@keyframes rs-star-twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.5); }
+}
+.rs-daynight-toggle__thumb {
+  position: absolute; top: 3px; left: 3px;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: oklch(98% 0.02 70);
+  display: flex; align-items: center; justify-content: center;
+  color: oklch(55% 0.12 70);
+  box-shadow: 0 2px 8px oklch(0% 0 0 / 0.15);
+  transition: transform var(--duration-normal) var(--ease-out-expo),
+              background-color var(--duration-normal) var(--ease-out-quart),
+              color var(--duration-normal) var(--ease-out-quart);
+  z-index: 1;
+}
+.rs-daynight-toggle--night .rs-daynight-toggle__thumb {
+  transform: translateX(32px);
+  background: oklch(30% 0.04 260);
+  color: oklch(85% 0.08 80);
+}
+
+/* ── Liquid Toggle ──────────────────────────────────────── */
+.rs-liquid-toggle {
+  position: relative; width: 48px; height: 26px; border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-full); padding: 3px; cursor: pointer;
+  background: transparent; overflow: hidden;
+  transition: border-color var(--duration-fast) var(--ease-out-quart);
+}
+.rs-liquid-toggle--on { border-color: var(--color-accent); }
+.rs-liquid-toggle__fill {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--color-accent-subtle);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+  border-radius: var(--radius-full);
+}
+.rs-liquid-toggle--on .rs-liquid-toggle__fill { transform: scaleX(1); }
+.rs-liquid-toggle__thumb {
+  position: relative; display: block; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--color-text-tertiary);
+  transition: transform var(--duration-fast) var(--ease-out-expo),
+              background var(--duration-fast) var(--ease-out-quart);
+  z-index: 1;
+}
+.rs-liquid-toggle--on .rs-liquid-toggle__thumb {
+  transform: translateX(22px); background: var(--color-accent);
+}
+
+/* ── Labeled Toggle ─────────────────────────────────────── */
+.rs-labeled-toggle {
+  position: relative; width: 60px; height: 30px; border: none;
+  border-radius: var(--radius-full); padding: 3px; cursor: pointer;
+  background: var(--color-border-strong);
+  transition: background var(--duration-fast) var(--ease-out-quart);
+}
+.rs-labeled-toggle--on { background: var(--color-accent); }
+.rs-labeled-toggle__text {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-family: var(--font-display); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.rs-labeled-toggle__on {
+  left: 8px; color: oklch(98% 0 0); opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-out-quart);
+}
+.rs-labeled-toggle--on .rs-labeled-toggle__on { opacity: 1; }
+.rs-labeled-toggle__off {
+  right: 7px; color: oklch(98% 0 0 / 0.7);
+  transition: opacity var(--duration-fast) var(--ease-out-quart);
+}
+.rs-labeled-toggle--on .rs-labeled-toggle__off { opacity: 0; }
+.rs-labeled-toggle__thumb {
+  display: block; width: 24px; height: 24px; border-radius: 50%;
+  background: oklch(100% 0 0); box-shadow: 0 1px 3px oklch(0% 0 0 / 0.15);
+  transition: transform var(--duration-fast) var(--ease-out-expo);
+}
+.rs-labeled-toggle--on .rs-labeled-toggle__thumb { transform: translateX(30px); }
+
+/* ── Reduced Motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .rs-daynight-star { animation: none; }
+}

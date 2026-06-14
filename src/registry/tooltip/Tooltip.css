@@ -1,0 +1,111 @@
+/* ═══════════════════════════════════════════════════════════
+   Tooltip Designs
+   ═══════════════════════════════════════════════════════════ */
+
+.rs-tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.rs-tooltip {
+  position: absolute;
+  background: oklch(20% 0 0); /* dark contrast tooltip */
+  color: oklch(98% 0 0);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid oklch(35% 0 0);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+  animation: rs-tooltip-fade-in 0.2s var(--ease-out-expo) forwards;
+}
+
+.rs-tooltip-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.rs-tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* ── Positions & Arrows ─────────────────────────────────── */
+
+/* Top */
+.rs-tooltip--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+}
+.rs-tooltip--top .rs-tooltip-arrow {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-color: oklch(20% 0 0) transparent transparent transparent;
+}
+
+/* Bottom */
+.rs-tooltip--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+}
+.rs-tooltip--bottom .rs-tooltip-arrow {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 5px 5px 5px;
+  border-color: transparent transparent oklch(20% 0 0) transparent;
+}
+
+/* Left */
+.rs-tooltip--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 8px;
+}
+.rs-tooltip--left .rs-tooltip-arrow {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px 0 5px 5px;
+  border-color: transparent transparent transparent oklch(20% 0 0);
+}
+
+/* Right */
+.rs-tooltip--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 8px;
+}
+.rs-tooltip--right .rs-tooltip-arrow {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px 5px 5px 0;
+  border-color: transparent oklch(20% 0 0) transparent transparent;
+}
+
+/* ── Animations ─────────────────────────────────────────── */
+@keyframes rs-tooltip-fade-in {
+  from {
+    opacity: 0;
+    scale: 0.95;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}

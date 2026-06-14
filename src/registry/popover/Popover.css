@@ -1,0 +1,132 @@
+/* ═══════════════════════════════════════════════════════════
+   Popover Designs
+   ═══════════════════════════════════════════════════════════ */
+
+.rs-popover-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.rs-popover-trigger-container {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.rs-popover {
+  position: absolute;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: 400;
+  animation: rs-popover-fade-in 0.2s var(--ease-out-expo) forwards;
+  width: max-content;
+  max-width: 300px;
+}
+
+.rs-popover-content {
+  padding: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+}
+
+.rs-popover-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* ── Placements & Arrows ────────────────────────────────── */
+
+/* Top */
+.rs-popover--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px;
+}
+.rs-popover--top .rs-popover-arrow {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-color: var(--color-border-strong) transparent transparent transparent;
+}
+
+/* Bottom */
+.rs-popover--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+}
+.rs-popover--bottom .rs-popover-arrow {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent var(--color-border-strong) transparent;
+}
+
+/* Left */
+.rs-popover--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 10px;
+}
+.rs-popover--left .rs-popover-arrow {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 0 6px 6px;
+  border-color: transparent transparent transparent var(--color-border-strong);
+}
+
+/* Right */
+.rs-popover--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 10px;
+}
+.rs-popover--right .rs-popover-arrow {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 6px 6px 0;
+  border-color: transparent var(--color-border-strong) transparent transparent;
+}
+
+/* ── Animations ─────────────────────────────────────────── */
+@keyframes rs-popover-fade-in {
+  from {
+    opacity: 0;
+    transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) scale(1);
+  }
+}
+
+/* Compensate transform with positions inside CSS animations */
+.rs-popover--top {
+  --tw-translate-x: -50%;
+  --tw-translate-y: 4px;
+}
+.rs-popover--bottom {
+  --tw-translate-x: -50%;
+  --tw-translate-y: -4px;
+}
+.rs-popover--left {
+  --tw-translate-x: 4px;
+  --tw-translate-y: -50%;
+}
+.rs-popover--right {
+  --tw-translate-x: -4px;
+  --tw-translate-y: -50%;
+}

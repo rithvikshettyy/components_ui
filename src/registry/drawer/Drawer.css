@@ -1,0 +1,128 @@
+/* ═══════════════════════════════════════════════════════════
+   Drawer / Bottom Sheet Designs
+   ═══════════════════════════════════════════════════════════ */
+
+.rs-drawer-overlay-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+}
+
+.rs-drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: oklch(0% 0 0 / 0.4);
+  backdrop-filter: blur(4px);
+  animation: rs-drawer-fade-in 0.25s ease forwards;
+}
+
+.rs-drawer {
+  position: absolute;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-2xl);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s var(--ease-out-quart);
+}
+
+.rs-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.rs-drawer-title {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.rs-drawer-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  transition: all var(--duration-fast) var(--ease-out-quart);
+}
+
+.rs-drawer-close-btn:hover {
+  color: var(--color-text);
+  background: var(--color-surface-hover);
+}
+
+.rs-drawer-body {
+  flex: 1;
+  padding: var(--space-5);
+  overflow-y: auto;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+}
+
+/* ── Positioning & Direction Animations ─────────────────── */
+
+/* Right Drawer */
+.rs-drawer--right {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  border-left: 1px solid var(--color-border);
+  animation: rs-drawer-slide-right 0.3s var(--ease-out-quart) forwards;
+}
+
+/* Left Drawer */
+.rs-drawer--left {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  border-right: 1px solid var(--color-border);
+  animation: rs-drawer-slide-left 0.3s var(--ease-out-quart) forwards;
+}
+
+/* Bottom Drawer (Bottom Sheet) */
+.rs-drawer--bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  max-height: 450px;
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+  border-top: 1px solid var(--color-border);
+  animation: rs-drawer-slide-bottom 0.3s var(--ease-out-quart) forwards;
+}
+
+/* ── Keyframes ──────────────────────────────────────────── */
+@keyframes rs-drawer-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rs-drawer-slide-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes rs-drawer-slide-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes rs-drawer-slide-bottom {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}

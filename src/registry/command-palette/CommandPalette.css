@@ -1,0 +1,204 @@
+/* ═══════════════════════════════════════════════════════════
+   Command Palette Designs
+   ═══════════════════════════════════════════════════════════ */
+
+.rs-cmd-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 15vh;
+}
+
+.rs-cmd-backdrop {
+  position: absolute;
+  inset: 0;
+  background: oklch(0% 0 0 / 0.4);
+  backdrop-filter: blur(4px);
+  animation: rs-cmd-fade-in 0.2s ease forwards;
+}
+
+.rs-cmd-dialog {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-2xl);
+  width: 100%;
+  max-width: 540px;
+  max-height: 450px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: rs-cmd-scale-in 0.2s var(--ease-out-expo) forwards;
+}
+
+.rs-cmd-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.rs-cmd-search-icon {
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+.rs-cmd-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  color: var(--color-text);
+  width: 100%;
+}
+
+.rs-cmd-esc-kbd {
+  font-size: var(--text-xxs);
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+}
+
+.rs-cmd-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-3) var(--space-2);
+}
+
+.rs-cmd-group {
+  margin-bottom: var(--space-3);
+}
+
+.rs-cmd-group-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xxs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  padding: var(--space-1) var(--space-3);
+  margin: 0;
+}
+
+.rs-cmd-group-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-1) 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rs-cmd-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px var(--space-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--duration-instant) var(--ease-out-quart);
+}
+
+.rs-cmd-item--selected {
+  background: var(--color-surface-hover);
+}
+
+.rs-cmd-item-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.rs-cmd-item-icon {
+  color: var(--color-text-secondary);
+  display: inline-flex;
+}
+.rs-cmd-item--selected .rs-cmd-item-icon {
+  color: var(--color-text);
+}
+
+.rs-cmd-item-title {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+.rs-cmd-item--selected .rs-cmd-item-title {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.rs-cmd-item-shortcut {
+  display: flex;
+  gap: 4px;
+}
+
+.rs-cmd-item-shortcut kbd {
+  font-family: var(--font-mono);
+  font-size: var(--text-xxs);
+  background: var(--color-surface-hover);
+  border: 1px solid var(--color-border);
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: var(--color-text-secondary);
+}
+.rs-cmd-item--selected .rs-cmd-item-shortcut kbd {
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
+}
+
+.rs-cmd-no-results {
+  padding: var(--space-6);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.rs-cmd-footer {
+  padding: var(--space-3) var(--space-5);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-hover);
+}
+
+.rs-cmd-help {
+  display: flex;
+  gap: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--text-xxs);
+  color: var(--color-text-secondary);
+}
+
+.rs-cmd-help kbd {
+  font-family: var(--font-mono);
+  font-size: var(--text-xxs);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0 3px;
+  border-radius: 2px;
+}
+
+/* ── Keyframes ──────────────────────────────────────────── */
+@keyframes rs-cmd-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rs-cmd-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
