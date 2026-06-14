@@ -44,7 +44,7 @@ function AppContent() {
       title: 'View All Components',
       category: 'Navigation',
       icon: <Compass size={16} />,
-      action: () => navigate('/components/all')
+      action: () => navigate('/')
     },
     {
       id: 'nav-buttons',
@@ -122,7 +122,8 @@ function AppContent() {
         <main className={`main-content ${sidebarCollapsed ? 'main-content--sidebar-collapsed' : ''}`}>
           <div className="main-content-inner">
             <Routes>
-              <Route path="/" element={<Navigate to="/components/all" replace />} />
+              <Route path="/" element={<CategoryGridPage />} />
+              <Route path="/components/all" element={<Navigate to="/" replace />} />
               <Route path="/components/form-submit" element={<FormSubmitPage />} />
               {/* Dynamic Category Grid */}
               <Route path="/components/:categorySlug" element={<CategoryGridPage />} />

@@ -78,7 +78,8 @@ export function Sidebar({ collapsed, mobileOpen, onToggleCollapse, onMobileClose
             return (
               <NavLink
                 key={item.slug}
-                to={`/components/${item.slug}`}
+                to={item.slug === 'all' ? '/' : `/components/${item.slug}`}
+                end={item.slug === 'all'}
                 className={({ isActive }) =>
                   `sidebar-item ${isActive ? 'sidebar-item--active' : ''}`
                 }

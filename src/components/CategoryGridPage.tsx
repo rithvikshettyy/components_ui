@@ -12,7 +12,7 @@ export function CategoryGridPage() {
   const [activeThemeFilter, setActiveThemeFilter] = useState<'all' | 'css'>('all');
   const [sortBy, setSortBy] = useState<'random' | 'popular'>('random');
 
-  const slug = categorySlug || 'buttons';
+  const slug = categorySlug || 'all';
 
   // Retrieve matching variants
   const matchingVariants = componentRegistry.filter(variant => {
