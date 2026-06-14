@@ -13,9 +13,10 @@ import { useTheme } from '../context/ThemeContext';
 
 interface HeaderProps {
   onMobileMenuToggle: () => void;
+  onSearchClick: () => void;
 }
 
-export function Header({ onMobileMenuToggle }: HeaderProps) {
+export function Header({ onMobileMenuToggle, onSearchClick }: HeaderProps) {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -35,7 +36,11 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
       </div>
 
       <div className="header-center">
-        <button className="header-search" aria-label="Search components">
+        <button 
+          className="header-search" 
+          aria-label="Search components"
+          onClick={onSearchClick}
+        >
           <Search className="header-search-icon" />
           <span className="header-search-text">Search components…</span>
           <kbd className="header-search-kbd">⌘K</kbd>

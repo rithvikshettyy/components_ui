@@ -298,7 +298,8 @@
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  padding: 10px 16px;
+  height: 40px;
+  padding: 0 16px;
   margin: 2px 12px;
   font-family: var(--font-display);
   font-size: var(--text-sm);
@@ -307,6 +308,7 @@
   border-radius: var(--radius-lg);
   text-decoration: none;
   position: relative;
+  white-space: nowrap;
   transition: color var(--duration-fast) var(--ease-out-quart),
               background-color var(--duration-fast) var(--ease-out-quart),
               transform var(--duration-fast) var(--ease-out-quart);
@@ -397,7 +399,8 @@
 
 .sidebar--collapsed .sidebar-item {
   margin: 4px 6px;
-  padding: 10px 0;
+  height: 40px;
+  padding: 0;
   justify-content: center;
   gap: 0;
 }
