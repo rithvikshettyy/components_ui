@@ -220,7 +220,7 @@ export function VariantDetailPage() {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
