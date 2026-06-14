@@ -61,18 +61,14 @@
   white-space: nowrap;
 }
 
-.header-brand-mark {
+.header-brand-logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
-  background: var(--color-text);
-  color: var(--color-bg);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  border-radius: var(--radius-sm);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
 }
 
 .header-center {
@@ -196,6 +192,7 @@
 
 .sidebar--collapsed {
   width: 56px;
+  overflow: hidden;
 }
 
 .sidebar-toggle {
@@ -402,6 +399,11 @@
   margin: 4px 6px;
   padding: 10px 0;
   justify-content: center;
+  gap: 0;
+}
+
+.sidebar--collapsed .sidebar-item--active::before {
+  left: 2px;
 }
 
 /* ── Main Content ────────────────────────────────────── */

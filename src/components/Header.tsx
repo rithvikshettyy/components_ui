@@ -1,4 +1,5 @@
 import { Search, Sun, Moon, Menu } from 'lucide-react';
+import logoImg from '../7815618b0663fa82f73fb96f7383edae.jpg';
 
 function GithubIcon() {
   return (
@@ -28,7 +29,7 @@ export function Header({ onMobileMenuToggle }: HeaderProps) {
           <Menu />
         </button>
         <a href="/" className="header-brand">
-          <span className="header-brand-mark">RS</span>
+          <img src={logoImg} alt="RS UI Logo" className="header-brand-logo" />
           <span>RS UI</span>
         </a>
       </div>
